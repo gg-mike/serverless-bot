@@ -9,6 +9,7 @@ def clean():
 
 def generate_lambda_src():
   for filepath in glob(f"src/lambda/*.py"):
+    print(filepath)
     file = filepath.split("\\")[1]
     new_dir = path.join("gen", *file.split(".")[:-1])
     makedirs(new_dir)
