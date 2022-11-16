@@ -67,7 +67,7 @@ Resources:
 
 Outputs:
   ServerlessBotApi:
-    Value: !Sub "https://${ServerlessBotApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/calendar/"
+    Value: !Sub "https://${ServerlessBotApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/calendar"
   
   CalendarEventDelete:
     Value: !GetAtt CalendarEventDelete.Arn
