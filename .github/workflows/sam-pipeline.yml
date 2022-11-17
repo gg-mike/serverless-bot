@@ -33,4 +33,4 @@ jobs:
       - run: python scripts/build_cleaner.py
 
       # sam deploy
-      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-hello-world --s3-bucket serverless-bot-bucket --capabilities CAPABILITY_IAM --region eu-west-2
+      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name serverless-bot --s3-bucket serverless-bot-bucket --capabilities CAPABILITY_IAM --region eu-west-2

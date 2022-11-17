@@ -23,56 +23,70 @@ Resources:
     Type: AWS::Serverless::HttpApi
     Properties:
       StageName: !Ref Stage
+      Auth:
+        DefaultAuthorizer: LambdaRequestAuthorizer
+        Authorizers:
+          LambdaRequestAuthorizer:
+            FunctionArn: !GetAtt AuthorizerFunc.Arn
+            FunctionInvokeRole: !GetAtt GenericLambdaRole.Arn
+            Identity:
+              Headers:
+                - Authorization
+              ReauthorizeEvery: 0
+            AuthorizerPayloadFormatVersion: 2.0
+            EnableSimpleResponses: false
 
   # ============================================================
   # LAMBDA
   # ============================================================
 
-  CalendarEventDelete:
+  # Authorizers
+
+  AuthorizerFunc:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: gen/auth
+
+  # Events
+
+  EventDelete:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName:
-      CodeUri: gen/calendar/events/delete
+      CodeUri: gen/events/delete
       Events:
         GetEvent:
           Type: HttpApi
           Properties:
             ApiId: !Ref ServerlessBotApi
-            Path: /calendar
+            Path: /events
             Method: delete
 
-  CalendarEventGet:
+  EventGet:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: gen/calendar/events/get/
+      CodeUri: gen/events/get/
       Events:
         GetEvent:
           Type: HttpApi
           Properties:
             ApiId: !Ref ServerlessBotApi
-            Path: /calendar
+            Path: /events
             Method: get
 
-  CalendarEventPost:
+  EventPost:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: gen/calendar/events/post/
+      CodeUri: gen/events/post/
       Events:
         GetEvent:
           Type: HttpApi
           Properties:
             ApiId: !Ref ServerlessBotApi
-            Path: /calendar
+            Path: /events
             Method: post
 
 Outputs:
   ServerlessBotApi:
-    Value: !Sub "https://${ServerlessBotApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/calendar"
-  
-  CalendarEventDelete:
-    Value: !GetAtt CalendarEventDelete.Arn
-  CalendarEventGet:
-    Value: !GetAtt CalendarEventGet.Arn
-  CalendarEventPost:
-    Value: !GetAtt CalendarEventPost.Arn
-  
+    Description: "Main API"
+    Value: !Sub "https://${ServerlessBotApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/events"

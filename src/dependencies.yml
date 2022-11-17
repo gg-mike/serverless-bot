@@ -4,12 +4,15 @@ globals:
     - requests
 
 lambda:
-  calendar:
+  events:
+    _req:
+      - google-api-python-client
+      - google-auth
     _dep:
-      - simple_response.py 
-    events:
-      get:
-        _dep:
-          - example.py
-        _req:
-          - numpy==1.23.4
+      - simple_response.py
+
+    get:
+      _dep:
+        - example.py
+      _req:
+        - numpy==1.23.4
