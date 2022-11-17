@@ -10,7 +10,7 @@ def get_effect(token):
 
 def handler(event, context):
     response = {
-        "principalId": "abcdef",
+        "principalId": "xyz",
         "policyDocument": {
             "Version": "2012-10-17",
             "Statement": [
