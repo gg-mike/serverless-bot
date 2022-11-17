@@ -9,13 +9,13 @@ def get_effect(token):
 
 
 def handler(event, context):
-    effect = "Deny"
-    routeArn = "placeholder"
-    try:
-        effect = get_effect(event["headers"]["authorization"])
-        routeArn = event["routeArn"]
-    except Exception as e:
-        print(e)
+    # effect = "Deny"
+    # routeArn = "placeholder"
+    # try:
+    #     effect = get_effect(event["headers"]["authorization"])
+    #     routeArn = event["routeArn"]
+    # except Exception as e:
+    #     print(e)
     
     response = {
         "principalId": "xyz",
@@ -24,8 +24,8 @@ def handler(event, context):
             "Statement": [
                 {
                     "Action": "execute-api:Invoke",
-                    "Effect": effect,
-                    "Resource": routeArn
+                    "Effect": "Allow",
+                    "Resource": event["routeArn"]
                 }
             ]
         }
