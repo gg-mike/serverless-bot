@@ -1,0 +1,15 @@
+globals: 
+  _dep: []
+  _req:
+    - requests
+
+lambda:
+  calendar:
+    _dep:
+      - simple_response.py 
+    events:
+      get:
+        _dep:
+          - example.py
+        _req:
+          - numpy==1.23.4

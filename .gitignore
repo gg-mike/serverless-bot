@@ -241,4 +241,5 @@ $RECYCLE.BIN/
 
 */build/*
 
+*aws-sam
 gen
