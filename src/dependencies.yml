@@ -4,6 +4,10 @@ globals:
     - requests
 
 lambda:
+  hello:
+    _dep:
+      - simple_response.py
+  
   events:
     _req:
       - google-api-python-client

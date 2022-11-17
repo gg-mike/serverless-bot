@@ -2,4 +2,4 @@ import simple_response
 import numpy
 
 def handler(event, context):
-    return simple_response.generate('calendar/events/get');
+    return simple_response.generate('events :get');

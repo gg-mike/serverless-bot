@@ -47,6 +47,22 @@ Resources:
     Properties:
       CodeUri: gen/auth
 
+  # Utils
+
+  HelloApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: gen/hello
+      Events:
+        GetEvent:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref ServerlessBotApi
+            Path: /hello
+            Method: any
+            Auth:
+              Authorizer: NONE
+
   # Events
 
   EventDelete:
@@ -89,4 +105,4 @@ Resources:
 Outputs:
   ServerlessBotApi:
     Description: "Main API"
-    Value: !Sub "https://${ServerlessBotApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/events"
+    Value: !Sub "https://${ServerlessBotApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello"
