@@ -55,7 +55,7 @@ Resources:
         Authorizers:
           LambdaRequestAuthorizer:
             FunctionArn: !GetAtt AuthorizerFunc.Arn
-            FunctionInvokeRole: !GetAtt AuthorizerFuncRole.Arn
+            FunctionInvokeRole: !GetAtt ServerlessBotApiAuthRole.Arn
             Identity:
               Headers:
                 - Authorization
