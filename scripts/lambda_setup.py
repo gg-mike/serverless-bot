@@ -21,7 +21,7 @@ def clean():
 
 def load_dependencies():
     global dependencies
-    with open(f"{src_dir}/lambda/dependencies.yml", "r") as file:
+    with open(f"{src_dir}/dependencies.yml", "r") as file:
         dependencies = load(file, Loader=FullLoader)
 
 
