@@ -23,6 +23,7 @@ jobs:
           aws-region: eu-west-2
 
       # Lambda setup
+      - run: pip install PyYAML
       - run: python scripts/lambda_setup.py
       
       # sam build 
