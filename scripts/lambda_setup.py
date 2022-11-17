@@ -71,7 +71,6 @@ def add_step(comment: str, func):
 
 
 def run():
-    print("Lambda setup")
     length = len(steps)
     length_str_size = len(str(length))
     for i, step in enumerate(steps):

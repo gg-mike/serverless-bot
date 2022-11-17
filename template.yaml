@@ -28,7 +28,7 @@ Resources:
         Authorizers:
           LambdaRequestAuthorizer:
             FunctionArn: !GetAtt AuthorizerFunc.Arn
-            FunctionInvokeRole: !GetAtt GenericLambdaRole.Arn
+            FunctionInvokeRole: !GetAtt AuthorizerFuncRole.Arn
             Identity:
               Headers:
                 - Authorization
